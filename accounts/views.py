@@ -9,7 +9,7 @@ def user_account(request):
     return HttpResponse("<h1>Welcome to your user account!</h1>")
 
 def user_registration(request):
-    return render(request,'register.html') 
+    return render(request,'accounts/register.html') 
 
 
 def user_login(request):
@@ -25,6 +25,6 @@ def user_login(request):
             # login(request, account)
             return redirect('user-account')
         else:
-            return render(request,'login.html')
+            return render(request,'accounts/login.html')
     else:
-          return render(request,'login.html')
+          return render(request,'accounts/login.html')
