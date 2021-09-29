@@ -21,7 +21,7 @@ class AdminCart(admin.ModelAdmin):
                     'created_at', 'updated_at')
 
 
-@admin.register(Order)
+@admin.register(OrderHistory)
 class AdminOrder(admin.ModelAdmin):
-    list_display = ('product', 'price', 'quantity', 'total_amount', 'payment_status', 'first_name',
+    list_display = ('product', 'price', 'quantity', 'total_amount', 'payment_status','paystack_order_id', 'first_name',
                     'last_name', 'email', 'address', 'postal_code', 'city', 'delivery_status', 'phone_no')

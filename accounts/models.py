@@ -15,17 +15,5 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    @receiver(post_save, sender=User)
-    def create_customer_profile(sender, instance, created, *args, **kwargs):
-        if created:
-            Profile.objects.get_or_create(user=instance)
-            print("Customer profile created successfully")
-
-    @receiver(post_save, sender=User)
-    def update_customer_profile(sender, instance, created, *args, **kwargs):
-        if created != True:
-            instance.profile.save()
-            print("Customer profile details for updated successfully")
-
     def __str__(self):
         return self.user.username

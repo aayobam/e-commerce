@@ -85,7 +85,7 @@ class Cart(models.Model):
             return cart_product_amount
 
 
-class Order(models.Model):
+class OrderHistory(models.Model):
     Delivert_Status = (
         (1, "Pending"),
         (2, "Out for Delivery"),
@@ -97,6 +97,7 @@ class Order(models.Model):
     quantity = models.BigIntegerField(default=1, validators=[MinValueValidator(1)])
     total_amount = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
     payment_status = models.BooleanField(default=True)
+    paystack_order_id = models.CharField(max_length=250)
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
     email = models.EmailField(max_length=150)

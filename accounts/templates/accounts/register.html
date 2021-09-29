@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registration Form</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+</script> 
+<style>
+	.registration-form {
+		width: 480px;
+    	margin: 50px auto;
+	}
+    .registration-form form {
+    	margin-bottom:525px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 40px;
+        margin-top: 15%;
+        
+        
+    }
+    .registration-form h2 {
+        margin: 0 0 35px
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 4px;
+    }
+    .btn {        
+        font-size: 15px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+<div class="registration-form">
+    <form action="/examples/actions/confirmation.php" method="post">
+        <h2 class="text-center">Registration</h2>
+    <p class="text-center">Create your account. It's free and only takes a minute.<br><br>
+        <div class="form-group">
+        <input type="text" class="form-control" placeholder="FirstName " required="required">
+        </div>
+        <div class="form-group">
+        <input type="text" class="form-control" placeholder="LastName " required="required">
+        </div>
+        <div class ="form-group">
+            <input type="email" class="form-control" placeholder="Email" required="required">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" required="required"><br>
+        <div class="form-group">
+            <input type="confirmed password" class="form-control" placeholder="Confirm Password" required="required"><br>
+        </div>
+        <div>
+        <div class="clearfix">
+            <label class="pull-left checkbox-inline"><input type="checkbox"required="required">I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label><br><br>
+            
+        </div> 
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Register Now</button><br>  
+        <div>     
+    </form>
+    <p class="text-center"><a href="#">Already have an account? <a href="#"> Sign in</a></p>
+
+</div>
+</body>
+</html>                                		
