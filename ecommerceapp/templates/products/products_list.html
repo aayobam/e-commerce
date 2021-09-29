@@ -1,0 +1,23 @@
+{% block content %}
+
+<section class="border-style">
+    <div class="bubble-heading">
+        <p><b>Item</b></p>
+        <p><b>Description</b></p>
+        <p><b>Left in stock</b></p>
+    </div>
+    {% for product in products %}
+    <a class="bubble-style">
+        <div class="product">
+            <div class="product-info">
+                <p><b>{{product.brand_name}}</b>, {{product.name}}</p>
+                <p>{{product.price}}</p>
+            </div>
+        </div>
+        <p class="description">{{product.short_description}}</p>
+        <div class="stock">{{product.in_stock}}</div>
+    </a>
+    {% endfor %}
+</section>
+
+{% endblock%}
