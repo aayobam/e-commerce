@@ -7,9 +7,9 @@ app_name = "accounts"
 urlpatterns = [
     path('register/', user_registration, name="user-registration"),
     path('login/', user_login, name="user-login"),
-    path("user/", userpage, name="userpage"),
     path("logout/", logout, name="logout"),
-    path('profile/updateprofile/', updateprofile, name="user_profile"),
+    path('updateprofile/', updateprofile, name="user-profile"),
+
 
 
     # Password Reset
