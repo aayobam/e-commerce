@@ -12,13 +12,14 @@ class Cart():
         else:
             self.cart = cart
 
-    def add(self, product):
+    def add(self, product, product_qty):
         product_id = product.id
         if product_id not in self.cart:
-            self.cart[product_id] = {'price': int(product.price)}
+            self.cart[product_id] = {'price': str(product.price), 'qty':int(product_qty)}
+            print("cart detail : ", self.cart)
         self.session.modified = True
-        print("cart = ", self.cart)
-        print("session: ", self.session)
+
+
 
     def update_product_in_cart(self, request):
         pass

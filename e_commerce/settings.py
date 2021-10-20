@@ -148,19 +148,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 # cloudinary config
-# if ALLOWED_HOSTS == False:
+
 CLOUDINARY_STORAGE = {
-    # cloud_name=env("cloud_name"),
-    # api_key=env("api_key"),
-    # api_secret=env("api_secrete"),
-    "CLOUD_NAME":"dvltzgw6j",
-    "API_KEY":"863195764846662",
-    "API_SECRET":"CPyvhwU680PAqOT_1CZgEqyJgGQ",
+    "CLOUD_NAME": env("cloud_name"),
+    "API_KEY": env("api_key"),
+    "API_SECRET": env("api_secret"),
 }
 
 # cloudinary configuration for image uploads
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
+#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 # django error logging

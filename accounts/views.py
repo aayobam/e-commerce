@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import Profile
 from django.contrib import auth, messages
-from .forms import UserForm, ProfileForm
 from .mail_notifocations import MailNotificationForRegisteration
 from e_commerce.settings import DEFAULT_FROM_EMAIL
 from .decorators import *
@@ -74,7 +73,7 @@ def user_login(request):
             auth.login(request, user)
             if 'next' in request.POST:
                 return (request.POST.get('next'))
-            messages.info(request, f'you are logged in as {username}')
+            messages.info(request, f'You are logged in as {username}')
             print('user logged')
             return redirect("product_list")
         else:
@@ -91,35 +90,44 @@ def logout(request):
     return redirect("product_list")
 
 
-# User Profile Views
-def userpage(request):
-    user_form = UserForm(instance=request.user)
-    profile_form=ProfileForm(instance=request.user)
-    template_name = "accounts/user.html"
-    context = {"user": request.user, "user_form": user_form, "profile_form":profile_form}
-    return render(request, template_name, context)
-
-
 @login_required
 def updateprofile(request):
-    template_name="accounts/user_profile.html"
-    if request.method == 'POST':
-        user_profile = Profile.objects.get(user=request.user)
-        p_form = ProfileForm(request.POST,request.FILES,instance=user_profile)
-        u_form = UserForm(request.POST,instance=request.user)
-        if p_form.is_valid() and u_form.is_valid():
-            u_form.save()
-            p_form.save()
-            user_profile = Profile.objects.get(user=request.user)
-            messages.success(request,'Your Profile has been updated!')
-            return redirect('accounts:userpage')
-    else:
-        p_form = ProfileForm(instance=request.user)
-        u_form = UserForm(instance=request.user)
+    #template_name="accounts/user_profile.html"
+    template_name = "accounts/user-profile.html"
+    
+    first_name = request.POST.get('first_name')
+    last_name = request.POST.get('last_name')
+    username = request.POST.get('username')
+    email = request.POST.get('email')
+    address=request.POST.get('address')
+    city=request.POST.get('city')
+    state=request.POST.get('state')
+    phone_no=request.POST.get('phone_no')
+    postal_code=request.POST.get('postal_code')
 
-    context={
-        'p_form': p_form, 
-        'u_form': u_form
-    }
-    return render(request, template_name, context )
+    if request.method == 'POST':
+        u1=User.objects.get(username=request.user)
+        u1.first_name=first_name
+        u1.last_name=last_name
+        u1.username=username
+        u1.email=email
+        u1.save()
+        print("user updated")
+        user_profile = Profile.objects.get(user=request.user)
+        user_profile.address=address
+        user_profile.city=city
+        user_profile.state=state
+        user_profile.phone_no=phone_no
+        user_profile.postal_code=postal_code
+        user_profile.save()
+        print("profile updated")
+        messages.success(request,'Your Profile has been updated!')
+        return redirect('product_list')
+    
+    else:
+        return render(request, template_name)
+        
+    #context={'p_form': p_form, 'u_form': u_form}
+    context={}
+    return render(request, template_name, context)
 

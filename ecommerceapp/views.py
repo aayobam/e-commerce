@@ -1,17 +1,21 @@
-from django.shortcuts import get_object_or_404, render, HttpResponse
-from django.contrib.auth.decorators import login_required
-from django.views.generic.base import TemplateView
 from .models import *
 from django.db.models import Q
 from django.views.generic import ListView
+from django.shortcuts import get_object_or_404, render, HttpResponse
+from django.contrib.auth.decorators import login_required
 
 
+
+
+
+# returns lists of all categories
 def categories(request):
     categories = Category.objects.all()
     context = {"categories": categories}
     return context
 
 
+# returns lists of all available products
 def product_list(request):
     template_name = "ecommerceapp/product_list.html"
     products = Product.objects.filter(available=True)
@@ -19,6 +23,7 @@ def product_list(request):
     return render(request, template_name, context)
 
 
+# returns details of each product
 def product_detail(request, slug):
     template_name = "ecommerceapp/product_detail.html"
     product = get_object_or_404(Product, slug=slug)
@@ -26,6 +31,7 @@ def product_detail(request, slug):
     return render(request, template_name, context)
 
 
+#filter, fetches and returns all products associated with specific categories
 def category_list(request, slug):
     category = get_object_or_404(Category, slug=slug)
     products = Product.objects.filter(category=category)
@@ -34,6 +40,7 @@ def category_list(request, slug):
     return render(request, template_name, context)
 
 
+# fetches products by category, brand and product name
 class SearcItem(ListView):
     template_name = "ecommerceapp/product_list.html"
     model = Product
@@ -43,8 +50,9 @@ class SearcItem(ListView):
         query = self.request.GET.get("search")
         if query:
             products = Product.objects.filter(
-                Q(name__icontains=query, available=True) | Q(brand_name__icontains=query, available=True) |
+                Q(name__icontains=query, available=True) | 
+                Q(brand_name__icontains=query, available=True) |
                 Q(category__name__icontains=query, available=True)
             )
             return products
-        return HttpResponse("product not found")
+        return None
