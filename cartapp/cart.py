@@ -16,7 +16,9 @@ class Cart():
         product_id = product.id
         if product_id not in self.cart:
             self.cart[product_id] = {'price': str(product.price), 'qty':int(product_qty)}
+            print("cart detail : ", self.cart)
         self.session.modified = True
+
 
 
     def update_product_in_cart(self, request):

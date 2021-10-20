@@ -109,11 +109,11 @@
             </div>
       </nav>
       {% if messages %}
-      {% for message in messages %}
-      <div class="alert alert-{{message.tags}}">
-            <p>{{message}}</p>
-      </div>
-      {% endfor %}
+            {% for message in messages %}
+                  <div class="alert alert-{{message.tags}}">
+                        <p>{{message}}</p>
+                  </div>
+            {% endfor %}
       {% endif %}
       {% block content %}{% endblock content %}
 
@@ -129,6 +129,7 @@
 
       <!-- Core theme JS-->
       <script src="{% static '/js/scripts.js' %}"></script>
+      <script src="{% static '/js/main.js' %}"></script>
 </body>
 
 </html>

@@ -92,7 +92,8 @@ def logout(request):
 
 @login_required
 def updateprofile(request):
-    template_name="accounts/user_profile.html"
+    #template_name="accounts/user_profile.html"
+    template_name = "accounts/user-profile.html"
     
     first_name = request.POST.get('first_name')
     last_name = request.POST.get('last_name')
@@ -124,9 +125,9 @@ def updateprofile(request):
         return redirect('product_list')
     
     else:
-        return render(request, 'accounts/user_profile.html')
+        return render(request, template_name)
         
     #context={'p_form': p_form, 'u_form': u_form}
     context={}
-    return render(request, 'accounts/user_profile.html',context)
+    return render(request, template_name, context)
 
