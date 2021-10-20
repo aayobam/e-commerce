@@ -226,7 +226,7 @@ border-bottom: solid 3px black;
 /*SALE PRODUCTS*/
 
 .featured-cont{
-    background-image: url('../images/ghostsBackground.jpeg');
+    background-image: url('/media/images/ghostsBackground.jpeg');
     
     
 }
@@ -393,7 +393,7 @@ border-bottom: solid 3px black;
 .productadd-wrap .product-cont{
     width: 100%;
     height: 100%;
-    background-image: url("../images/fitbit.png");
+    background-image: url("/media/images/fitbit.png");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -447,7 +447,7 @@ border-bottom: solid 3px black;
     justify-content: center;
     width: 100%;
     height: 100vh;
-    background-image: url("ghost\ logo.png");
+    background-image: url("/media/ghost logo.png");
     background-repeat: no-repeat;
     background-position: center;
     background-color: deepskyblue;
@@ -624,7 +624,7 @@ border-bottom: solid 3px black;
     justify-content: center;
     width: 100%;
     height: 100vh;
-    background-image: url("../images/ghost.png");
+    background-image: url("/media/images/ghost.png");
     background-repeat: no-repeat;
     background-position: center;
     background-color: deepskyblue;
