@@ -73,7 +73,7 @@
                               {% if request.user.is_authenticated %}
                               <ul class="navbar-nav">
                                     <div class="mt-2">
-                                          <p>Welcome, {{request.user.first_name}}</p>
+                                          <p>Welcome {{request.user.first_name}},</p>
                                     </div>
                                     <li class="nav-item">
                                           <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
@@ -86,7 +86,7 @@
                                           </a>
                                           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                                 <li><a class="dropdown-item"
-                                                            href="{% url 'accounts:userpage' %}">Profile</a></li>
+                                                            href="{% url 'accounts:user-profile' %}">Profile</a></li>
                                                 <li><a class="dropdown-item" href="#">Order History</a></li>
                                                 <li><a class="dropdown-item" href="#">Other settings</a></li>
                                           </ul>

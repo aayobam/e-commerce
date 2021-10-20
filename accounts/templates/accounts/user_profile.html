@@ -15,7 +15,7 @@
                <a href="#"><img src="{% static 'media/images/ghost.png' %}" alt="Company logo of a ghost"></a> 
             </div>
 			
-            <!-- <ul class="nav-products"> 
+            <ul class="nav-products"> 
                 <li><a href="../html/Electronics.html">Electronics</a></li>
                 <li><a href="">Athletic Apparel</a></li>
                 <li><a href="">Bycicles</a></li>
@@ -23,75 +23,78 @@
                 <div class="drop-down">
                     <h3>Settings</h3>
                     <ul>
-                    <li><a href="../html/user-profile.html">User-Profile</a></li>
+                    <li><a href="{% url 'accounts:user-profile.html' }">User-Profile</a></li>
                     <li>Settings</li>
                     <li>Other</li>
                 </div>
-            </ul>  -->
-            <!-- <button class="log-in btn"><a href="../html/log-in.html">Login</a></button> -->
-            <!-- <button class="log-in btn"><a href="../html/register.html">Register</a></button> -->
+            </ul>
+             <button class="log-in btn"><a href="{% url 'accounts:user-login' %}">Login</a></button> 
+            <button class="log-in btn"><a href="{%url 'accounts:user-registration' %}">Register</a></button>
         </nav>
 	</header>
 	<div class="form-wrap">
 		<div class="profile -Updateform">
-		<form action="{% url 'accounts:user_profile' %}" method="post" enctype="multipart/form-data">
+		<form action="{% url 'accounts:user-profile' %}" method="post" enctype="multipart/form-data">
 			{% csrf_token %}
         	
         	<h2>Profile Update Form</h2>
 			 <div class="form-control">
 				<div class="first-column">
 					<div class="profile-img">
-						<img src="{% static '/media/images/pic133.jpg' %}" alt="" class="avatar rounded" width="150"> 
+						<img src="{% static 'media/images/pic133.jpg' %}" alt="" class="avatar rounded" width="150"> 
 					</div>
 					<div class="input">
-						{% csrf_token %}
-						{{u_form}}
+						<!-- {{u_form}} -->
 						
-						<!-- <label for="firstname" class="form-label">First Name</label> -->
-						<!-- <input type="first name" name="firstname" id="exampleFormControlInput1" placeholder="firstname"> -->
+						 <label for="firstname" class="form-label">First Name</label> 
+						<input type="firstname" name="first_name" id="firstname" placeholder="firstname">
 					</div>
 					<div class="input">
-						<!-- <label for="LastName" class="form-label">Last Name</label> -->
-						<!-- <input type="last name" name="lastname"  id="exampleFormControlInput1" placeholder="Lastname"> -->
+						 <label for="LastName" class="form-label">Last Name</label>
+						 <input type="lastname" name="last_name"  id="lastname" placeholder="Lastname">
 					</div>
 					<div class="input">
-						<!-- <label for="exampleFormControlInput1" class="form-label">User Name</label> -->
-						<!-- <input type="user name" name="username" id="exampleFormControlInput1" placeholder="username"> -->
+						<label for="username" class="form-label">User Name</label> 
+						<input type="username" name="username" id="username" placeholder="username">
 					</div>
 					<div class="input">
-						<!-- <label for="exampleFormControlInput1" class="form-label">Email</label> -->
-						<!-- <input type="email" name="email" id="exampleFormControlInput1" placeholder="email"> -->
+						<label for="email" class="form-label">Email</label>
+						<input type="email" name="email" id="email" placeholder="email">
 					</div>
 				</div>	
 				<div class="second-column"> 
 					<div class="input">
-					{% csrf_token %}
-						{{p_form}}		
-						  	<!-- <label for="exampleFormControlInput1" class="form-label">Address</label> 
-							<input type="address"  name="address" id="exampleFormControlInput1" placeholder="address">  -->
+						<!-- {{p_for}} -->
+						<label for="address" class="form-label">Address</label> 
+							<input type="address"  name="address" id="address" placeholder="address">
 					</div>
-					<!--<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">City/State</label> 
-						 <input type="city" name="city" id="exampleFormControlInput1" placeholder="city"> 
+					<div class="input">
+						<label for="city" class="form-label">City</label> 
+						 <input type="city" name="city" id="city" placeholder="city"> 
+					</div> 
+					<div class="input">
+						<label for="state" class="form-label">state</label> 
+						 <input type="state" name="state" id="state" placeholder="state"> 
 					</div> 
 					<div Class="input">
-						<label for="exampleFormControlInput1" class="form-label">Country</label> 
-						<input type="country" name="country" id="exampleFormControlInput1" placeholder="country"> 
+						<label for="country" class="form-label">Country</label> 
+						<input type="country" name="country" id="country" placeholder="country"> 
 					</div>
 					<div Class="input">
-						<label for="exampleFormControlInput1" class="form-label">Zipcode</label> 
-						<input type="Zipcode"  name="zipcode" id="exampleFormControlInput1" placeholder="zipcode"> 
+						<label for="Postalcode" class="form-label">Zipcode</label> 
+						<input type="Zipcode"  name="postal_code" id="postal_code" placeholder="zipcode"> 
 					</div>
 					<div Class="input">
-						<label for="exampleFormControlInput1" class="form-label">Phone Number</label> 
-						<input type="phone number" name="phone number" id="exampleFormControlInput1" placeholder="phone number"> 
-					</div>  -->
+						<label for="phonenumber" class="form-label">Phone Number</label> 
+						<input type="phonenumber" name="phone_no" id="phonenumber" placeholder="phone number"> 
+					</div> 
 					 
 				</div>
 				<div class="btn-cont">
 					<button class="profile-btn" type="submit" name="save">SAVE PROFILE</button>
 				</div>
 			</div>
+			
 		</form>
 	</div>
 	</div>
