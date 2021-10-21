@@ -27,7 +27,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="product")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     brand_name = models.CharField(max_length=250)
     name = models.CharField(max_length=250)
     slug = models.SlugField(max_length=200)
@@ -45,6 +45,7 @@ class Product(models.Model):
     class Meta:
         ordering = ("name",)
         verbose_name = "product"
+        verbose_name_plural = "products"
 
     def __str__(self):
         return self.name
@@ -73,8 +74,7 @@ class OrderHistory(models.Model):
     postal_code = models.CharField(max_length=20)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
-    delivery_status = models.CharField(
-        choices=Delivert_Status, default="Pending", max_length=100)
+    delivery_status = models.CharField(choices=Delivert_Status, default="Pending", max_length=100)
     phone_no = PhoneField(blank=True, help_text="contact phone number")
 
     def __str__(self):
