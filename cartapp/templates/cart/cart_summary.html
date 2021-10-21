@@ -66,6 +66,11 @@
     <div class="col-12 text-end">
       <div class="h6 fw-bold">Sub Total: $<div id="subtotal" class="d-inline-flex">{{cart.get_total_price}}</div></div>
     </div>
+    <div class="col-12 text-end">
+      <div class="h6 fw-bold">
+        <a href="#" id="subtotal" class="d-inline-flex btn btn-outline-info text-black">Place Order</a>
+      </div>
+    </div>
   </div>
   <div class="cart-cont">
     {% with total_qty=cart|length %}
@@ -77,7 +82,7 @@
     {% endwith %}
   </div>
   {% else %}
-  <h1 class="text-center">Your cart is empty</h1>
+  <h1 class="text-center" style="margin-bottom:388px;">Your cart is empty</h1>
   {% endif %}
   <div class="cart-cont">
     {% with total_qty=cart|length %}
