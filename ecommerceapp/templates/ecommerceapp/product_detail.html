@@ -44,7 +44,13 @@
         </div>
     </main>
     <div class="cart-cont">
-        <a href="{% url 'cart_summary' %}"><i class="fas fa-shopping-cart" id="cart-qty">1</i></a>
+    {% with total_qty=cart|length %}
+        {% if total_qty > 0 %}
+            <a href="{% url 'cart_summary' %}"><i class="fas fa-shopping-cart" id="cart-qty">{{total_qty}}</i></a>
+        {% else %}
+            <a href="{% url 'cart_summary' %}"><i class="fas fa-shopping-cart" id="cart-qty">0</i></a>
+        {% endif %}
+    {% endwith %}
     </div>
 </div>
 
@@ -64,7 +70,7 @@
                 },
                 success: function(json){
                     document.getElementById("cart-qty").innerHTML = json.qty
-                    console.log("data is ",json.product_qty)
+                    console.log("quantity is ", json.qty)
                 },
                 error: function(response){
                     
