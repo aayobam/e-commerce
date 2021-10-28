@@ -11,6 +11,8 @@ from .validate_card_details import ValidatePaymentDetails
 
 
 
+
+
 #Billing details view
 @login_required(login_url="accounts:user-login")
 def billing_view(request):
@@ -20,9 +22,8 @@ def billing_view(request):
             return redirect("accounts:user-profile")
       template_name = "payment/payment.html"
       cart = Cart(request)
-      total_price = str(cart.get_total_price())
-      total_price = total_price.replace(".", "")
-      total = int(total_price)
+      total_price = cart.get_total_price()
+      total = float(total_price)
       context = {"total":total, "profile":profile}
       return render(request, template_name, context)
 
@@ -37,12 +38,23 @@ def card_form_view(request):
             card = request.POST.get("card_number")
             cvv = request.POST.get("cvv")
             exp = request.POST.get("exp")
-
             card_details = Card.objects.create(user=profile.user, card_number = card, cvv=cvv, exp=exp)
-            validate_payment = ValidatePaymentDetails(card_number=card_details.card_number, cvv=card_details.cvv, exp=card_details.exp)
+            # validate_payment = ValidatePaymentDetails(card_number=card_details.card_number, cvv=card_details.cvv, exp=card_details.exp)
             # validate_payment.validate_details(request)
-            if card_details:
-                  card_details.save()
+            
+            order = Order.objects.create(
+                  user=profile.user, 
+                  first_name = profile.user.first_name,
+                  last_name = profile.user.last_name,
+                  email = profile.user.email,
+                  address =  profile.address,
+                  zipcode = profile.zipcode,
+                  total_amount = total,
+                  payment_status = True,
+            )
+            order_id=order.pk
+            for item in cart:
+                  Order.objects.create(order_id=order_id, product=item["product"],price=item["price"], quantity=item["qty"])
                   messages.success(request, "order successful")
 
                   # mail config
@@ -59,7 +71,11 @@ def card_form_view(request):
                   # send_mail_for_orders.mail_new_customer()
                   # send_mail_for_orders.mail_admin()
                   return redirect("order-success")
-      context = {"total":total}
+            else:
+                  messages.error(request, "order not successful")
+                  return redirect("billing-view")
+      else:
+            context = {"total":total}
       return render(request, template_name, context)
 
 
