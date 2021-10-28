@@ -2,7 +2,6 @@ from django.core.validators import *
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
-from phone_field import PhoneField
 from django.urls import reverse
 from django.core.validators import MinValueValidator
 
@@ -39,7 +38,6 @@ class Product(models.Model):
     available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    #added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=True)
     added_by = models.ForeignKey(User, on_delete=models.CASCADE, default=True)
 
     class Meta:
