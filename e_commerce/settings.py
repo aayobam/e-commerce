@@ -50,8 +50,6 @@ INSTALLED_APPS = [
     'cartapp',
     'payment',
     'orders',
-
-    #paystack app
    
 ]
 
