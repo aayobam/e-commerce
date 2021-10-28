@@ -111,15 +111,19 @@ def updateprofile(request):
         u1.email=email
         u1.save()
         print("user updated")
-        user_profile = Profile.objects.get(user=request.user)
+        user_profile = Profile.objects.get(request.user)
         user_profile.address=address
         user_profile.city=city
         user_profile.state=state
         user_profile.phone_no=phone_no
         user_profile.zipcode=zipcode
         user_profile.country=country
-        user_profile.save()
-        messages.success(request,'Your Profile has been updated!')
-        return redirect('product_list')
+        if user_profile:
+            user_profile.save()
+            messages.success(request,'Your Profile has been updated!')
+            return redirect('product_list')
+        else:
+            messages.success(request,'update your profile')
+            return redirect("accounts:suer-profile")
     else:
         return render(request, template_name)

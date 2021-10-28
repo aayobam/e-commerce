@@ -7,8 +7,8 @@
 {% block content %}
 
 	<div class="form-wrap">
-		<form action="">
-		{% csrf_token %}
+		<form action="{% url 'accounts:user-profile' %}" method="post">
+			{% csrf_token %}
 			<div class="form-control">
 				<div class="first-column">
 					<div class="profile-img">
@@ -16,44 +16,44 @@
 					</div>
 					<div class="input">
 						<label for="exampleFormControlInput1" class="form-label">First Name</label>
-						<input type="first name"  id="exampleFormControlInput1" placeholder="">
+						<input type="first name"  name="first_name" id="exampleFormControlInput1" placeholder="First Name">
 					</div>
 					<div class="input">
 						<label for="exampleFormControlInput1" class="form-label">Last Name</label>
-						<input type="last name"  id="exampleFormControlInput1" placeholder="">
+						<input type="last name" name="last_name" id="exampleFormControlInput1" placeholder="Last Name">
 					</div>
 					<div class="input">
 						<label for="exampleFormControlInput1" class="form-label">User Name</label>
-						<input type="user name"  id="exampleFormControlInput1" placeholder="">
+						<input type="text" name="username" id="exampleFormControlInput1" placeholder="Username">
 					</div>
 					<div class="input">
 						<label for="exampleFormControlInput1" class="form-label">Email</label>
-						<input type="email"  id="exampleFormControlInput1" placeholder="">
+						<input type="email" name="email" id="exampleFormControlInput1" placeholder="Email">
 					</div>
 				</div>	
 				<div class="second-column"> 
 					<div class="input">
 						<label for="exampleFormControlInput1" class="form-label">Address</label>
-						<input type="address"  id="exampleFormControlInput1" placeholder="">
+						<input type="address" name="address" id="exampleFormControlInput1" placeholder="Street Address">
 					</div>
 					<div class="input">
 						<label for="exampleFormControlInput1" class="form-label">City/State</label>
-						<input type="city/town"  id="exampleFormControlInput1" placeholder="">
+						<input type="text"  name="city" id="exampleFormControlInput1" placeholder="City or Town">
 					</div> 
 					<div Class="input">
 						<label for="exampleFormControlInput1" class="form-label">Country</label>
-						<input type="country"  id="exampleFormControlInput1" placeholder="">
+						<input type="text" name="country" id="exampleFormControlInput1" placeholder="Country e.g Usa or Uk">
 					</div>
 					<div Class="input">
 						<label for="exampleFormControlInput1" class="form-label">Zipcode</label>
-						<input type="Zipcode"  id="exampleFormControlInput1" placeholder="">
+						<input type="Zipcode" name="zipcode" id="exampleFormControlInput1" placeholder="Zipcode">
 					</div>
 					<div Class="input">
 						<label for="exampleFormControlInput1" class="form-label">Phone Number</label>
-						<input type="phone number"  id="exampleFormControlInput1" placeholder="">
+						<input type="text" name="phone_no" id="exampleFormControlInput1" placeholder="Phone Number">
 					</div>
 					<div class="btn-cont">
-						<button class="profile-btn" type="button">SAVE PROFILE</button>
+						<button class="profile-btn btn btn-info" type="button">SAVE PROFILE</button>
 					</div>
 				</div>
 			</div>

@@ -15,6 +15,9 @@ from .validate_card_details import ValidatePaymentDetails
 @login_required(login_url="accounts:user-login")
 def billing_view(request):
       profile = Profile.objects.get(user=request.user)
+      if (profile.address=="" and profile.zipcode=="" and profile.city=="" and profile.state=="" and profile.country==""):
+            messages.info(request, "you have to update your profile to place your orders")
+            return redirect("accounts:user-profile")
       template_name = "payment/payment.html"
       cart = Cart(request)
       total_price = str(cart.get_total_price())
