@@ -6,6 +6,7 @@ from .mail_notifocations import MailNotificationForRegisteration
 from e_commerce.settings import DEFAULT_FROM_EMAIL
 from .decorators import *
 from django.contrib.auth.decorators import login_required
+import time
 
 
 # create user registration view
@@ -30,12 +31,11 @@ def user_registration(request):
                     return redirect("accounts:user-registration")
 
                 else:
-                    user = User.objects.create_user(
-                        username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
+                    user = User.objects.create(username=username, email=email, first_name=first_name, last_name=last_name)
+                    user.set_password(password1)
                     user.save()
                     Profile.objects.get_or_create(user=user)
-                    messages.success(
-                        request, f"account for {user.email} successfully created")
+                    messages.success(request, f"account for {user.email} successfully created")
 
                     # initialize static data for mail notification
                     message_body = f"<h1>Hello {user.email}, your registration on bayshop is successful</h1>",
@@ -43,15 +43,14 @@ def user_registration(request):
                     sender_email = DEFAULT_FROM_EMAIL
                     recipient_email = user.email
 
-                    send_notification = MailNotificationForRegisteration(
-                        recipient_email, sender_email, mail_subject, message_body)
+                    send_notification = MailNotificationForRegisteration(recipient_email, sender_email, mail_subject, message_body)
 
-                    # send mail to user after registeration
-                    send_notification.mail_new_customer()
+                    # # send mail to user after registeration
+                    # send_notification.mail_new_customer()
 
-                    # send mail to admin(s)
-                    send_notification.mail_admin()
-
+                    # # send mail to admin(s)
+                    # send_notification.mail_admin()
+                    time.sleep(2)
                     return redirect("accounts:user-login")
         except User.DoesNotExist:
             messages.error(request, "Password don't match!")
@@ -72,15 +71,13 @@ def user_login(request):
         if user is not None:
             auth.login(request, user)
             if 'next' in request.POST:
-                return (request.POST.get('next'))
-            messages.info(request, f'You are logged in as {username}')
-            print('user logged')
-            return redirect("product_list")
+                messages.info(request, f'You are logged in as {username}')
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect("product_list") 
         else:
             messages.error(request, f'Invalid username or password')
             return redirect("accounts:user-login")
-            # return render(request,'accounts/login.html',{'error':'Username or password is incorrect!'})
-
     else:
         return render(request, template_name, context={})
 
@@ -102,8 +99,9 @@ def updateprofile(request):
     address=request.POST.get('address')
     city=request.POST.get('city')
     state=request.POST.get('state')
+    country=request.POST.get('country')
     phone_no=request.POST.get('phone_no')
-    postal_code=request.POST.get('postal_code')
+    zipcode=request.POST.get('zipcode')
 
     if request.method == 'POST':
         u1=User.objects.get(username=request.user)
@@ -118,16 +116,10 @@ def updateprofile(request):
         user_profile.city=city
         user_profile.state=state
         user_profile.phone_no=phone_no
-        user_profile.postal_code=postal_code
+        user_profile.zipcode=zipcode
+        user_profile.country=country
         user_profile.save()
-        print("profile updated")
         messages.success(request,'Your Profile has been updated!')
         return redirect('product_list')
-    
     else:
         return render(request, template_name)
-        
-    #context={'p_form': p_form, 'u_form': u_form}
-    context={}
-    return render(request, template_name, context)
-

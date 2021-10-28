@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Payment{% endblock %}
+
+
+{% block content %}
+
+  <div class="container">
+    <div class="row justify-content-center mb-5 mt-4">
+      <div class="col-md-6">
+          <form action="{% url 'billing-view' %}" method="POST" id="paymentForm" class="text-center form-control"> 
+              <p>First Name: {{ profile.user.first_name }}</p>
+              <p>Last Name: {{ profile.user.last_name}}</p>
+              <p>Email: {{ profile.user.email}}</p>
+              <p>Address:{{ profile.address}}</p>
+              <p>zipcode: {{ profile.zipcode}}</p>
+              <p>City: {{ profile.city|title}}</p>
+              <p>State: {{ profile.state|title}}</p>
+              <p>Country: {{ profile.country|title}}</p>
+              
+              <p>Total Amount: ${{ total }}</p>
+              {% comment %} <a href="{% url 'card-modal' %}" class="btn btn-success">Pay USD ${{total}}</a> {% endcomment %}
+              <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Pay USD ${{total}}
+          </button>
+          </form>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title alert alert-success" id="staticBackdropLabel">Make One Time Payment of ${{total}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+          <form class="account-form p-4 rounded col-lg-10 mx-auto" method="post" action="{% url 'card-modal' %}">
+              {% csrf_token %}
+              <label for="card_number">Card Number</label>
+              <input type="text" name="card_number" id="" class="form-control w-100" placeholder="16 digit number" required="required" min="16" max="16">
+
+              <label for="cvv">cvv</label>
+              <input type="text" name="cvv" id="" class="form-control w-100" placeholder="3 digit number" required="required" min="3" max="3">
+
+              <label for="exp">exp</label>
+              <input type="text" name="exp" id="" class="form-control w-100" placeholder="10/21" required="required" min="5" max="5">
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" value="Make Payment" class="btn btn-primary" id="make-payment">Make Payment</button>
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
