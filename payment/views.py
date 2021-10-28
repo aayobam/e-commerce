@@ -40,7 +40,7 @@ def card_form_view(request):
 
             card_details = Card.objects.create(user=profile.user, card_number = card, cvv=cvv, exp=exp)
             validate_payment = ValidatePaymentDetails(card_number=card_details.card_number, cvv=card_details.cvv, exp=card_details.exp)
-            validate_payment.validate_details(request)
+            # validate_payment.validate_details(request)
             if card_details:
                   card_details.save()
                   messages.success(request, "order successful")

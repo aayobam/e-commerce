@@ -111,7 +111,7 @@ def updateprofile(request):
         u1.email=email
         u1.save()
         print("user updated")
-        user_profile = Profile.objects.get(request.user)
+        user_profile = Profile.objects.get(request.user, instance=u1)
         user_profile.address=address
         user_profile.city=city
         user_profile.state=state
