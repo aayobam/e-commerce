@@ -68,13 +68,11 @@ def user_login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = auth.authenticate(username=username, password=password)
-
         if user is not None:
             auth.login(request, user)
             if 'next' in request.POST:
                 return (request.POST.get('next'))
             messages.info(request, f'You are logged in as {username}')
-            print('user logged')
             return redirect("product_list")
         else:
             messages.error(request, f'Invalid username or password')
@@ -92,9 +90,8 @@ def logout(request):
 
 @login_required
 def updateprofile(request):
-    #template_name="accounts/user_profile.html"
-    template_name = "accounts/user-profile.html"
-    
+    template_name="accounts/user-profile.html"
+  
     first_name = request.POST.get('first_name')
     last_name = request.POST.get('last_name')
     username = request.POST.get('username')
@@ -126,8 +123,6 @@ def updateprofile(request):
     
     else:
         return render(request, template_name)
-        
-    #context={'p_form': p_form, 'u_form': u_form}
     context={}
     return render(request, template_name, context)
 
