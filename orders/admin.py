@@ -1,13 +1,13 @@
 from django.contrib import admin
-from .models import OrderedItem, OrderHistory
+from .models import *
 
 
 
-@admin.register(OrderedItem)
+@admin.register(OrderItem)
 class AdminOrderItem(admin.ModelAdmin):
-    list_display = ('order_history', 'product', 'price', 'quantity', 'delivery_status', 'created', 'updated')
+    list_display = ('order', 'product', 'price', 'quantity', 'delivery_status', 'created', 'updated')
 
 
-@admin.register(OrderHistory)
-class AdminOrderHistory(admin.ModelAdmin):
-    list_display = ('user', 'first_name', 'last_name', 'email', 'address', 'phone_no', 'postal_code', 'city', 'state', 'country', 'total_amount', 'payment_status', 'order_reference', 'created')
+@admin.register(Order)
+class AdminOrder(admin.ModelAdmin):
+    list_display = ('user', 'first_name', 'last_name', 'email', 'address', 'phone_no', 'zipcode', 'city', 'state', 'country', 'total_amount', 'payment_status', 'reference', 'created')
