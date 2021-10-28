@@ -8,9 +8,11 @@ from .views import home_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
-    path('', include('cartapp.urls')),
     path('', include('ecommerceapp.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('cart/', include('cartapp.urls')),
+    path('payment/', include('payment.urls')),
+    path('dashboard/', include('orders.urls')),
 ]
 
 if settings.DEBUG:

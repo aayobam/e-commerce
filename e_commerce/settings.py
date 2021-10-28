@@ -42,13 +42,17 @@ INSTALLED_APPS = [
 
     # phone field package
     'phone_field',
+    'django_countries',
 
     # project apps
+    'ecommerceapp',
     'accounts',
     'cartapp',
-    'ecommerceapp',
+    'payment',
+    'orders',
 
-    'paystack',
+    #paystack app
+   
 ]
 
 
@@ -194,10 +198,10 @@ EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
 
+#pay stack api keys
+PAYSTACK_SECRET_KEY = env("secret_key")
+PAYSTACK_PUBLIC_KEY = env("public_key")
 
-# Paystack private and public keys. for testing alone
-PAYSTACK_PUBLIC_KEY = env("PAYSTACK_PUBLIC_KEY")
-PAYSTACK_SECRET_KEY = env("PAYSTACK_SECRET_KEY")
 
-
+#AUTH_USER_MODEL = 'accounts.UserBase'
 django_heroku.settings(locals())
