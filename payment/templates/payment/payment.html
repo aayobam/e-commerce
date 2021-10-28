@@ -9,8 +9,8 @@
     <div class="row justify-content-center mb-5 mt-4">
       <div class="col-md-6">
           <form action="{% url 'billing-view' %}" method="POST" id="paymentForm" class="text-center form-control"> 
-              <p>First Name: {{ profile.user.first_name }}</p>
-              <p>Last Name: {{ profile.user.last_name}}</p>
+              <p>First Name: {{ profile.user.first_name|title }}</p>
+              <p>Last Name: {{ profile.user.last_name|title}}</p>
               <p>Email: {{ profile.user.email}}</p>
               <p>Address:{{ profile.address}}</p>
               <p>zipcode: {{ profile.zipcode}}</p>
