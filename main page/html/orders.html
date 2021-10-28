@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+</head> 
+<body>
+    <nav class="navbar navbar-expand-xl navbar-light">
+        <a class="navbar-brand" href="../html/index.html"><img src="../images/ghost logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav m-auto ">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
+              Electronics  
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Phones</a>
+                <a class="dropdown-item" href="#">Watches</a>
+                <a class="dropdown-item" href="#">TV</a>
+                <a class="dropdown-item" href="#">Heaphones</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
+                Athletic Apparel
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Men Apparel</a>
+                  <a class="dropdown-item" href="#">Women Apparel</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
+                Bicycles
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Cross Trainers</a>
+                  <a class="dropdown-item" href="#">Mountain Bikes</a>
+                  <a class="dropdown-item" href="#"></a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
+                 Athletic Equipment
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Cycling Bikes</a>
+                  <a class="dropdown-item" href="#">Treadmills</a>
+                  <a class="dropdown-item" href="#">Weight Training Equipment</a>
+                  <a class="dropdown-item" href="#">Sports Accessories</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+              </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <div class="drop-down">
+              <h3><i class="fas fa-cog"></i></h3>
+              <ul>
+              <li><a href="../html/user-profile.html">User-Profile</a></li>
+              <li><a href="../html/orders.html">Orders</a></li>
+              
+              <li>Other</li>
+          </div>
+            <button class="btn btn-outline-success my-2 my-sm-0" ><a href="../html/log-in.html">Log In</a></button>
+            <button class="btn btn-outline-success my-2 my-sm-0" ><a href="../html/register.html">Register</a></button>
+          </form>
+        </div>
+      </nav>
+    <div class="order-container">
+        <div class="col-md-8 mx-auto">
+            <h2 class="text-center">MY ORDERS</h2>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-6 mx-auto text-center">
+                        <button type="button" class="btn btn-warning btn-filter" data-target="Buy again">Buy Again</button>
+                        <button type="button" class="btn btn-danger btn-filter" data-target="cancelled orders">Cancelled Orders</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="table w-100">
+                            <tbody>
+                                <tr data-status="orders"></tr>
+                                <tr data-status="ordered">
+                                    <td>
+                                        <div class="row">
+                                            <div class="col col-6">
+                                                <div class="ckbox">
+                                                    <input type="checkbox" id="checkbox3">
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                                <div class="media-body"><br>
+                                                    <span class="media-meta pull-right">October 13, 2021</span><br>
+                                                    <h4 class="title">
+                                                        Lorem Impsum
+                                                        <span class="pull-right ordered">(Ordered)</span>
+                                                    </h4>
+                                                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                                                </div>
+                                            </div>
+                                            <div class="col col-6"><br>
+                                                <p>Shipment Date:<br> October 17, 2021</p>
+                                                <p>Estimate Delivery Date: <br>  October 19, 2021 <br> 2 Day Express Delivery <br> (Delivered)</p>
+                                            </div> 
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr data-status="ordered">
+                                    <td>
+                                        <div class="row">
+                                            <div class="col col-6">
+                                                <div class="ckbox">
+                                                    <input type="checkbox" id="checkbox3">
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span class="media-meta pull-right">October 06, 2021</span><br>
+                                                    <h4 class="title">
+                                                        Lorem Impsum
+                                                        <span class="pull-right ordered">(Ordered)</span>
+                                                    </h4>
+                                                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                                                </div>
+                                            </div>
+                                            <div class="col col-6">
+                                                <p>Shipping Date: <br> October 9, 2021 </p>
+                                                <p>Estimate Delivered Date: <br> October 12, 2021 <br> Scanned at local Postal Faculty at 6:14am on October 12, 2021 <br> Out for delivery<br>(Delivered)</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr data-status="ordered">
+                                    <td>
+                                        <div class="row">
+                                            <div class="col col-6">
+                                                <div class="ckbox">
+                                                    <input type="checkbox" id="checkbox3">
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span class="media-meta pull-right">September 29, 2021</span><br>
+                                                    <h4 class="title">
+                                                        Lorem Impsum
+                                                        <span class="pull-right ordered">(Ordered)</span>
+                                                    </h4>
+                                                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                                                </div>
+                                            </div>
+                                            <div class="col col-6">
+                                                <p>Shipping Date: <br> Delayed - Due to  the industry-wide production delays related to COVID-19, some of our anticipated dates have shifted.</p>
+                                                <p>Delivery Date: <br>(To Be Determined)</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr data-status="ordered">
+                                    <td>
+                                        <div class="row">
+                                            <div class="col col-6">
+                                                <div class="ckbox">
+                                                    <input type="checkbox" id="checkbox3">
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span class="media-meta pull-right">September 6, 2021</span><br>
+                                                    <h4 class="title">
+                                                        Lorem Impsum
+                                                        <span class="pull-right ordered">(Cancelled)</span>
+                                                    </h4>
+                                                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
