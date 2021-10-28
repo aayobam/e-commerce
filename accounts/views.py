@@ -124,6 +124,6 @@ def updateprofile(request):
             return redirect('product_list')
         else:
             messages.success(request,'update your profile')
-            return redirect("accounts:suer-profile")
+            return redirect("accounts:user-profile")
     else:
         return render(request, template_name)
