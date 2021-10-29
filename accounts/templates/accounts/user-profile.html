@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
-
-
 {% block content %}
 
 	<div class="form-wrap">
-		<form action="{% url 'accounts:user-profile' %}" method="post">
+		<form action="{% url 'accounts:user-profile' %}" method="post" enctype="multipart/form-data">
 			{% csrf_token %}
 			<div class="form-control">
 				<div class="first-column">
@@ -15,46 +12,52 @@
 						<img src="{% static '../media/images/pic133.jpg' %}" alt="image should be here" class="avatar rounded" width="150"> 
 					</div>
 					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">First Name</label>
-						<input type="first name"  name="first_name" id="exampleFormControlInput1" placeholder="First Name">
+						<label for="firstname" class="form-label">First Name</label> 
+						<input type="firstname" name="first_name" id="firstname" placeholder="firstname">
 					</div>
 					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">Last Name</label>
-						<input type="last name" name="last_name" id="exampleFormControlInput1" placeholder="Last Name">
+						<label for="LastName" class="form-label">Last Name</label>
+						<input type="lastname" name="last_name"  id="lastname" placeholder="Lastname">
 					</div>
 					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">User Name</label>
-						<input type="text" name="username" id="exampleFormControlInput1" placeholder="Username">
+						<label for="username" class="form-label">User Name</label> 
+						<input type="username" name="username" id="username" placeholder="username">
 					</div>
 					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">Email</label>
-						<input type="email" name="email" id="exampleFormControlInput1" placeholder="Email">
+						<label for="email" class="form-label">Email</label>
+						<input type="email" name="email" id="email" placeholder="email">
 					</div>
 				</div>	
 				<div class="second-column"> 
 					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">Address</label>
-						<input type="address" name="address" id="exampleFormControlInput1" placeholder="Street Address" required>
+						<label for="address" class="form-label">Address</label> 
+						<input type="address"  name="address" id="address" placeholder="address">
 					</div>
 					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">City/State</label>
-						<input type="text"  name="city" id="exampleFormControlInput1" placeholder="City or Town" required>
+						<label for="city" class="form-label">City</label> 
+						<input type="city" name="city" id="city" placeholder="city"> 
+					</div> 
+					<div class="input">
+						<label for="state" class="form-label">state</label> 
+						<input type="state" name="state" id="state" placeholder="state"> 
 					</div> 
 					<div Class="input">
-						<label for="exampleFormControlInput1" class="form-label">Country</label>
-						<input type="text" name="country" id="exampleFormControlInput1" placeholder="Country e.g Usa or Uk" required>
+						<label for="country" class="form-label">Country</label> 
+						<input type="country" name="country" id="country" placeholder="country"> 
 					</div>
 					<div Class="input">
+						<label for="Postalcode" class="form-label">Zipcode</label> 
+						<input type="Zipcode"  name="postal_code" id="postal_code" placeholder="zipcode"> 
 						<label for="exampleFormControlInput1" class="form-label">Zipcode</label>
-						<input type="Zipcode" name="zipcode" id="exampleFormControlInput1" placeholder="Zipcode" required>
+						<input type="Zipcode"  id="exampleFormControlInput1" placeholder="">
 					</div>
 					<div Class="input">
-						<label for="exampleFormControlInput1" class="form-label">Phone Number</label>
-						<input type="text" name="phone_no" id="exampleFormControlInput1" placeholder="Phone Number" required>
+						<label for="phonenumber" class="form-label">Phone Number</label> 
+						<input type="phonenumber" name="phone_no" id="phonenumber" placeholder="phone number"> 
 					</div>
-				</div>
-				<div class="btn-cont">
-					<button class="profile-btn btn btn-info" type="submit">SAVE PROFILE</button>
+					<div class="btn-cont">
+						<button class="profile-btn" type="button">SAVE PROFILE</button>
+					</div>
 				</div>
 			</div>
 		</form>
