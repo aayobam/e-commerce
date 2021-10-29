@@ -11698,7 +11698,7 @@ button a:hover{
 .productadd-wrap .product-cont{
   width: 100%;
   height: 100%;
-  background-image: url("../images/fitbit.png");
+  background-image: url("/media/images/fitbit.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -11752,7 +11752,7 @@ padding-bottom: 30px;
   justify-content: center;
   width: 100%;
   height: 100vh;
-  background-image: url("ghost\ logo.png");
+  background-image: url("/media/ghost logo.png");
   background-repeat: no-repeat;
   background-position: center;
   background-color: deepskyblue;
@@ -11945,7 +11945,7 @@ margin: 50px auto;
   justify-content: center;
   width: 100%;
   height: 90vh;
-  background-image: url("../images/ghost\ logo.png");
+  background-image: url("/media/images/ghost logo.png");
   background-repeat: no-repeat !important;
   background-position: center;
   background-color: deepskyblue;
@@ -11990,7 +11990,6 @@ margin: 50px auto;
 
 
 .user-profile-wrap {
-  /* background-image: url("ghost\ logo.png"); */
   background-repeat: repeat-x;
   background-position: center;
   width: 100%;
