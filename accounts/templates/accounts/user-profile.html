@@ -1,65 +1,72 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 {% load static %}
-
+{% block title %}Profile{% endblock title %}
 
 
 
 {% block content %}
-
-	<div class="form-wrap">
-		<form action="{% url 'accounts:user-profile' %}" method="post">
-			{% csrf_token %}
-			<div class="form-control">
-				<div class="first-column">
-					<div class="profile-img">
-						<img src="{% static '../media/images/pic133.jpg' %}" alt="image should be here" class="avatar rounded" width="150"> 
-					</div>
-					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">First Name</label>
-						<input type="first name"  name="first_name" id="exampleFormControlInput1" placeholder="First Name">
-					</div>
-					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">Last Name</label>
-						<input type="last name" name="last_name" id="exampleFormControlInput1" placeholder="Last Name">
-					</div>
-					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">User Name</label>
-						<input type="text" name="username" id="exampleFormControlInput1" placeholder="Username">
-					</div>
-					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">Email</label>
-						<input type="email" name="email" id="exampleFormControlInput1" placeholder="Email">
-					</div>
-				</div>	
-				<div class="second-column"> 
-					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">Address</label>
-						<input type="address" name="address" id="exampleFormControlInput1" placeholder="Street Address" required>
-					</div>
-					<div class="input">
-						<label for="exampleFormControlInput1" class="form-label">City/State</label>
-						<input type="text"  name="city" id="exampleFormControlInput1" placeholder="City or Town" required>
-					</div> 
-					<div Class="input">
-						<label for="exampleFormControlInput1" class="form-label">Country</label>
-						<input type="text" name="country" id="exampleFormControlInput1" placeholder="Country e.g Usa or Uk" required>
-					</div>
-					<div Class="input">
-						<label for="exampleFormControlInput1" class="form-label">Zipcode</label>
-						<input type="Zipcode" name="zipcode" id="exampleFormControlInput1" placeholder="Zipcode" required>
-					</div>
-					<div Class="input">
-						<label for="exampleFormControlInput1" class="form-label">Phone Number</label>
-						<input type="text" name="phone_no" id="exampleFormControlInput1" placeholder="Phone Number" required>
+<!--PROFILE PAGE-->
+<div class="user-profile-wrap" style="margin-bottom:100px;"> 
+	<div class="mx-auto col-md-8"> 
+		<div class="profile-form">
+			<form action="{% url 'accounts:user-profile' %}">
+				{% csrf_token %}
+				<div class="row">
+					<div class="col left m-2 p-5 card">
+						<h3>User-Profile </h3>	
+						<div class="mb-3 text-center">
+							<img src="/media/images/pic133.jpg" alt="" class="avatar rounded" width="150"> 
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">First Name</label>
+							<input type="text" class="form-control register" name="first_name" id="exampleFormControlInput1" placeholder="First Name">
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">Last Name</label>
+							<input type="text" class="form-control register" name="last_name" id="exampleFormControlInput1" placeholder="Last Name">
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">User Name</label>
+							<input type="text" class="form-control register" name="username" id="exampleFormControlInput1" placeholder="username">
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">Email</label>
+							<input type="email" class="form-control register" name="email" id="exampleFormControlInput1" placeholder="Email">
+						</div>
+					</div>	
+					<div class="col right m-2 p-5 card"> 
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">Address</label>
+							<input type="address" class="form-control register" name="address" id="exampleFormControlInput1" placeholder="Address">
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">City/State</label>
+							<input type="city/town" class="form-control register" name="city/state" id="exampleFormControlInput1" placeholder="City and State">
+						</div> 
+						<div Class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">Country</label>
+							<input type="country" class="form-control register" id="exampleFormControlInput1" placeholder="Country e,g Usa, Ng">
+						</div>
+						<div Class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">Zipcode</label>
+							<input type="Zipcode" class="form-control register" id="exampleFormControlInput1" placeholder="Zipcode">
+						</div>
+						<div Class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+							<input type="phone number" class="form-control register" name="phone_no" id="exampleFormControlInput1" placeholder="Phone Number">
+						</div>
+						<div Class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">Image</label>
+							<input type="file" src="" alt="" class="form-control register" id="exampleFormControlInput1">
+						</div>
+					
+						<div class="mt-5 text-center">
+							<button class="btn btn-primary profile-button w-100" type="submit">SAVE PROFILE</button>
+						</div>
 					</div>
 				</div>
-				<div class="btn-cont">
-					<button class="profile-btn btn btn-info" type="submit">SAVE PROFILE</button>
-				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
-
+</div>
 {% endblock content %}
-
-

@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ghost Retail - User Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static './css/styles.css' %}">  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+</script> 
+</head>
+<body> 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light nav-login">
+        <div class="container">
+              <a class="navbar-brand" href="{% url 'product_list' %}">
+                <img src="/media/images/ghost logo.png" alt="">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <!-- shop tab-->
+                    <ul class="navbar-nav">
+                          <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                      role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                      <li>
+                                            <a class="dropdown-item" href="{% url 'product_list' %}">AllProducts</a>
+                                      </li>
+                                      {% for category in categories %}
+                                      <li>
+                                          <a class="dropdown-item"
+                                            href="{{category.get_absolute_url}}">{{category.name|title}}
+                                          </a>
+                                      </li>
+                                      {% endfor %}
+                                </ul>
+                          </li>
+                    </ul>
+
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+                          <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                      <form action="{% url 'search_item' %}" method="get">
+                                            <input type="text" name="search" placeholder="search item" class="form-control">
+                                      </form>
+                                </li>
+                          </ul>
+                    </div>
+                    <div class="collapse navbar-collapse justify-content-end .login-cont" id="navbarNavDropdown">
+                          <ul class="navbar-nav mobile-nav">
+                            <div class="drop-down">
+                              <h3><i class="fas fa-cog"></i></h3>
+                              <ul>
+                                <li><a href="{% url 'accounts:user-profile' %}">User-Profile</a></li>
+                                <li><a href="../html/orders.html">Orders</a></li>
+                                <li> <a  href="{% url 'accounts:logout' %}">Logout</a></li>
+                              </ul>
+                            </div>
+                            <button class="btn btn-outline-success my-2 my-sm-0" >
+                              <a href="{% url 'accounts:user-login' %}">Log In</a>
+                            </button>
+                            <button class="btn btn-outline-success my-2 my-sm-0" >
+                              <a href="{% url 'accounts:user-registration' %}">Register</a>
+                            </button>  
+                     </div>
+              </div>
+        </div>
+      </nav> 
+      <div class="col-md-12">
+            {% if messages %}
+                  {% for message in messages %}
+                        <div class="alert alert-{{message.tags}}">
+                              <p>{{message}}</p>
+                        </div>
+                  {% endfor %}
+            {% endif %}
+      </div>
+      <div class="log-in-wrap">
+            <div class="login-form">
+            <form action="{% url 'accounts:user-login' %}" method="post">
+                  {% csrf_token %}
+                  <h2 class="text-center">Login</h2>       
+                  <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+                  </div>
+                  <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+                  </div>
+                  {% if request.GET.next %}
+                        <input type="hidden" name="next" value="{{request.GET.next}}">
+                  {% endif %}
+                  <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                  </div>
+                  <div class="clearfix">
+                        <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+                        <a href="{% url 'accounts:password_reset' %}" class="pull-right">Forgot Password?</a>
+                  </div>        
+            </form>
+            <p class="text-center"><a href="{% url 'accounts:user-registration' %}">Create an Account</a></p>
+
+            </div>
+      </div>
+</body>
+</html>      

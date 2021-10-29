@@ -33,7 +33,7 @@ class Product(models.Model):
     model = models.CharField(max_length=250)
     product_image = models.ImageField(default="default.png", upload_to="product_image/")
     product_description = models.CharField(max_length=1000)
-    price = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(1)])
+    price = models.DecimalField(decimal_places=2, max_digits=4, validators=[MinValueValidator(1)])
     in_stock = models.IntegerField(default=0, blank=True, null=True, validators=[MinValueValidator(1)])
     available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

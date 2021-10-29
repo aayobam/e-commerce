@@ -45,8 +45,8 @@ def user_registration(request):
 
                     send_notification = MailNotificationForRegisteration(recipient_email, sender_email, mail_subject, message_body)
 
-                    send_notification.mail_new_customer()
-                    send_notification.mail_admin()
+                    # send_notification.mail_new_customer()
+                    # send_notification.mail_admin()
 
                     # # send mail to admin(s)
                     # send_notification.mail_admin()
@@ -62,7 +62,7 @@ def user_registration(request):
 # create user view login
 @authenticated_user
 def user_login(request):
-    template_name = "accounts/login.html"
+    template_name = "accounts/log-in.html"
     if (request.method == 'POST'):
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -89,7 +89,6 @@ def logout(request):
 
 @login_required
 def updateprofile(request):
-    #template_name="accounts/user_profile.html"
     template_name = "accounts/user-profile.html"
     
     first_name = request.POST.get('first_name')
@@ -102,6 +101,8 @@ def updateprofile(request):
     country=request.POST.get('country')
     phone_no=request.POST.get('phone_no')
     zipcode=request.POST.get('zipcode')
+    profile_image=request.POST.get('profile_image')
+    
 
     if request.method == 'POST':
         u1=User.objects.get(username=request.user)
@@ -118,12 +119,14 @@ def updateprofile(request):
         user_profile.phone_no=phone_no
         user_profile.zipcode=zipcode
         user_profile.country=country
+        user_profile.profile_image=profile_image
         if user_profile:
             user_profile.save()
-            messages.success(request,'Your Profile has been updated!')
+            messages.success(request,f'Your Profile has been updated!')
             return redirect('product_list')
         else:
-            messages.success(request,'update your profile')
+            messages.success(request, f'update your profile')
             return redirect("accounts:user-profile")
     else:
-        return render(request, template_name)
+        context = {"profile_profile":profile_image}
+    return render(request, template_name, context)
