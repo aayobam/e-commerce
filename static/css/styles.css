@@ -12007,10 +12007,28 @@ margin: 50px auto;
 }
 
 
-
 /*ORDERS CSS*/
 .order-container{
   background-color: deepskyblue;
   padding-top: 50px;
   height: auto;
+}
+
+/* styling for card summary page */
+
+.totalprice{
+  margin-right:-50px;
+}
+
+.btn_update{
+  margin-left:10px;
+}
+
+@media only screen and (max-width:350px){
+  .totalprice{
+    margin-left: -20px;
+}
+  .btn-update{
+    margin-bottom: -40px;
+  }
 }

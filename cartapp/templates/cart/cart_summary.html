@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% load static %}
 {% block title %}Cart Summary{% endblock %}
 
@@ -42,7 +42,7 @@
                           
                         </select>
                         <button type="button" id="update-button" data-index="{{product.id}}"
-                          class="btn btn-outline-secondary btn-sm update-button">
+                          class="btn btn-outline-secondary btn-sm update-button btn_update">
                           Update
                         </button>
                         <button type="button" id="delete-button" data-index="{{product.id}}"
@@ -50,7 +50,7 @@
                           Delete
                         </button>
                       </div>
-                      <div class="col-3" style="padding-left:60px">
+                      <div class="col-3 totalprice">
                           <div id="totalprice">Total Price: ${{item.total_price}}</div>
                       </div>
 

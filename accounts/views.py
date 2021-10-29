@@ -119,7 +119,7 @@ def updateprofile(request):
         user_profile.phone_no=phone_no
         user_profile.zipcode=zipcode
         user_profile.country=country
-        user_profile.profile_image=profile_image
+        user_profile.profile_picture=profile_image
         if user_profile:
             user_profile.save()
             messages.success(request,f'Your Profile has been updated!')
