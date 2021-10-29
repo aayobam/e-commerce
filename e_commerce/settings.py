@@ -2,9 +2,8 @@ from pathlib import Path
 import os
 import environ
 import django_heroku
-import cloudinary
-import cloudinary.api
-import cloudinary.uploader
+
+
 
 
 env = environ.Env()
@@ -24,6 +23,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
 if DEBUG == False:
     ALLOWED_HOSTS = ['http://bayshops.herokuapp.com', '127.0.0.1', 'localhost']
+
 
 
 # Application definition
@@ -96,14 +96,17 @@ WSGI_APPLICATION = 'e_commerce.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
         'NAME': env('DB_NAME'),
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASS'),
         'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT')
+        'PORT': env('DB_PORT'),
     }
 }
+
+
+
 
 
 # Password validation
@@ -196,9 +199,6 @@ EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
 
-#pay stack api keys
-PAYSTACK_SECRET_KEY = env("secret_key")
-PAYSTACK_PUBLIC_KEY = env("public_key")
 
 
 #AUTH_USER_MODEL = 'accounts.UserBase'

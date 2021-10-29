@@ -43,7 +43,6 @@ def card_form_view(request):
             # validate_payment.validate_details(request)
             
             order = Order.objects.create(
-                  user=profile.user, 
                   first_name = profile.user.first_name,
                   last_name = profile.user.last_name,
                   email = profile.user.email,

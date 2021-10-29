@@ -45,8 +45,8 @@ def user_registration(request):
 
                     send_notification = MailNotificationForRegisteration(recipient_email, sender_email, mail_subject, message_body)
 
-                    # # send mail to user after registeration
-                    # send_notification.mail_new_customer()
+                    send_notification.mail_new_customer()
+                    send_notification.mail_admin()
 
                     # # send mail to admin(s)
                     # send_notification.mail_admin()
