@@ -22,8 +22,8 @@ def billing_view(request):
             return redirect("accounts:user-profile")
       template_name = "payment/payment.html"
       cart = Cart(request)
-      total_price = cart.get_total_price()
-      total = float(total_price)
+      total_price = str(cart.get_total_price())
+      total = total_price
       context = {"total":total, "profile":profile}
       return render(request, template_name, context)
 
@@ -43,6 +43,7 @@ def card_form_view(request):
             # validate_payment.validate_details(request)
             
             order = Order.objects.create(
+                  user = profile.user,
                   first_name = profile.user.first_name,
                   last_name = profile.user.last_name,
                   email = profile.user.email,
@@ -53,7 +54,7 @@ def card_form_view(request):
             )
             order_id=order.pk
             for item in cart:
-                  Order.objects.create(order_id=order_id, product=item["product"],price=item["price"], quantity=item["qty"])
+                  OrderItem.objects.create(order_id=order_id, product=item["product"],price=item["price"], quantity=item["qty"])
                   messages.success(request, "order successful")
 
                   # mail config
