@@ -11986,9 +11986,7 @@ margin: 50px auto;
   font-weight: bold;
 }
 
-/*****USER PROFILE*****************************/
-
-
+/*****USER PROFILE*****/
 .user-profile-wrap {
   background-repeat: repeat-x;
   background-position: center;
@@ -12010,14 +12008,9 @@ margin: 50px auto;
 
 
 
-/*ORDERS CSS*********************************/
+/*ORDERS CSS*/
 .order-container{
   background-color: deepskyblue;
   padding-top: 50px;
   height: auto;
 }
-
-
-
-
-
