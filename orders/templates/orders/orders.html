@@ -1,0 +1,120 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="order-container" style="margin-bottom:-20px;">
+        <div class="col-md-8 mx-auto">
+            <h2 class="text-center">MY ORDERS</h2>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-6 mx-auto text-center">
+                        <button type="button" class="btn btn-warning btn-filter" data-target="Buy again">Buy Again</button>
+                        <button type="button" class="btn btn-danger btn-filter" data-target="cancelled orders">Cancelled Orders</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="table w-100">
+                            <tbody>
+                                <tr data-status="orders"></tr>
+                                <tr data-status="ordered">
+                                    <td>
+                                        <div class="row">
+                                            <div class="col col-6">
+                                                <div class="ckbox">
+                                                    <input type="checkbox" id="checkbox3">
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                                <div class="media-body"><br>
+                                                    <span class="media-meta pull-right">October 13, 2021</span><br>
+                                                    <h4 class="title">
+                                                        Lorem Impsum
+                                                        <span class="pull-right ordered">(Ordered)</span>
+                                                    </h4>
+                                                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                                                </div>
+                                            </div>
+                                            <div class="col col-6"><br>
+                                                <p>Shipment Date:<br> October 17, 2021</p>
+                                                <p>Estimate Delivery Date: <br>  October 19, 2021 <br> 2 Day Express Delivery <br> (Delivered)</p>
+                                            </div> 
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr data-status="ordered">
+                                    <td>
+                                        <div class="row">
+                                            <div class="col col-6">
+                                                <div class="ckbox">
+                                                    <input type="checkbox" id="checkbox3">
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span class="media-meta pull-right">October 06, 2021</span><br>
+                                                    <h4 class="title">
+                                                        Lorem Impsum
+                                                        <span class="pull-right ordered">(Ordered)</span>
+                                                    </h4>
+                                                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                                                </div>
+                                            </div>
+                                            <div class="col col-6">
+                                                <p>Shipping Date: <br> October 9, 2021 </p>
+                                                <p>Estimate Delivered Date: <br> October 12, 2021 <br> Scanned at local Postal Faculty at 6:14am on October 12, 2021 <br> Out for delivery<br>(Delivered)</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr data-status="ordered">
+                                    <td>
+                                        <div class="row">
+                                            <div class="col col-6">
+                                                <div class="ckbox">
+                                                    <input type="checkbox" id="checkbox3">
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span class="media-meta pull-right">September 29, 2021</span><br>
+                                                    <h4 class="title">
+                                                        Lorem Impsum
+                                                        <span class="pull-right ordered">(Ordered)</span>
+                                                    </h4>
+                                                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                                                </div>
+                                            </div>
+                                            <div class="col col-6">
+                                                <p>Shipping Date: <br> Delayed - Due to  the industry-wide production delays related to COVID-19, some of our anticipated dates have shifted.</p>
+                                                <p>Delivery Date: <br>(To Be Determined)</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr data-status="ordered">
+                                    <td>
+                                        <div class="row">
+                                            <div class="col col-6">
+                                                <div class="ckbox">
+                                                    <input type="checkbox" id="checkbox3">
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span class="media-meta pull-right">September 6, 2021</span><br>
+                                                    <h4 class="title">
+                                                        Lorem Impsum
+                                                        <span class="pull-right ordered">(Cancelled)</span>
+                                                    </h4>
+                                                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

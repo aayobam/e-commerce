@@ -7,6 +7,6 @@ def order_success(request):
 
 
 def orders_view(request):
-      template_name = "orders/dashboard.html"
+      template_name = "orders/orders.html"
       context = {"message": "your order histories are displayed here"}
       return render(request, template_name, context)
