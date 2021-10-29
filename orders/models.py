@@ -34,7 +34,7 @@ class Order(models.Model):
         ordering = ("-created",)
 
     def __str__(self):
-        return self.first_name
+        return self.reference
 
 
 class OrderItem(models.Model):
