@@ -72,10 +72,10 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile)
     address = models.CharField(max_length=250)
-    zipcode = models.CharField(max_length=10)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     country = CountryField()
+    zipcode = models.CharField(max_length=10)
     phone_no = PhoneField(blank=True)
     profile_picture = models.ImageField(upload_to="media/images", default="default.jpg")
     created_at = models.DateTimeField(auto_now_add=True)
