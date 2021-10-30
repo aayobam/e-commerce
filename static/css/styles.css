@@ -11570,9 +11570,6 @@ button a:hover{
   padding: 5px;
 }
 
-.original-price{
-  text-decoration: line-through;
-}
 
 /*FOOTER*/
 .footer-cont{
@@ -11590,8 +11587,8 @@ button a:hover{
 /*SALES MEDIA QUEARYS*/
 @media screen and (max-width:1300px){
   .product-cont .sales-product{
-      width: 400px;
-      height:200px;
+      width: 500px;
+      height:250px;
       background-color: white;
       margin: 20px;
   }
@@ -11624,11 +11621,6 @@ button a:hover{
     margin-bottom:7px;
   }
 
-  .original-price{
-    text-decoration: line-through;
-    font-size: 9px !important;
-  }
-
   .sale-price{
     font-size: 9px !important;
   }
@@ -11651,11 +11643,6 @@ button a:hover{
   .mobile-nav{
    flex-direction: row !important;
    justify-content: center !important;
-  }
-
-  .original-price{
-    font-size: 10px;
-    text-decoration: line-through;
   }
 
   .prices-cont{
@@ -12030,5 +12017,34 @@ margin: 50px auto;
 }
   .btn-update{
     margin-bottom: -40px;
+  }
+}
+
+/* product detail page styling */
+
+
+.update-button{
+  margin-left: 10px;
+}
+
+@media only screen and (max-width:790px){
+  
+  .prod-detail-img{
+    margin-bottom:40px;
+  }
+}
+
+
+
+
+
+@media only screen and (max-width:450px){
+  .update-button{
+    margin-bottom:-60px;
+    margin-top:20px;
+    margin-left:20px;
+  }
+  .delete-button{
+    margin-top:10px;
   }
 }
