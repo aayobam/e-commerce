@@ -10,5 +10,5 @@ class AdminOrderItem(admin.ModelAdmin):
 
 @admin.register(Order)
 class AdminOrder(admin.ModelAdmin):
-    list_display = ('user','first_name', 'last_name', 'email', 'address', 'phone_no', 'zipcode', 'city', 'state', 'country', 'total_amount', 'payment_status', 'reference', 'created')
+    list_display = ('first_name', 'last_name', 'email', 'address', 'phone_no', 'zipcode', 'city', 'state', 'country', 'total_amount', 'payment_status', 'reference', 'created')
     search_fields = ("reference", "first_name", "last_name")
