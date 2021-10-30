@@ -1,4 +1,3 @@
-from typing import Counter
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
@@ -7,7 +6,7 @@ from phone_field import PhoneField
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+#from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 
 
