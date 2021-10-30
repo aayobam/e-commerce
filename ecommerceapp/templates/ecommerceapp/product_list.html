@@ -68,15 +68,12 @@
                                           </div>
                                           <div class="sales-product-detail">
                                                 <div class="sales-text-cont">
-                                                      <h4>{{product.name|title}}</h4>
+                                                      <h5>{{product.name|title}}</h5>
                                                       <h5>Brand: {{product.brand_name|title}}</h5>
-                                                      <p>{{product.product_description|title}}</p>
-                                                      <5>Category: {{product.category.name|title}}</5>
+                                                      <h6>Description: {{product.product_description|title}}</h6>
                                                 </div>
                                                 <div class="prices-cont">
-                                                      <div class="sale-price">
-                                                      ${{product.price}}
-                                                      </div>
+                                                     Price: ${{product.price}}
                                                 </div>
                                                 <div class="sales-btn-cont">
                                                       <a class="btn btn-outline-dark mt-auto" href="{{product.get_absolute_url}}">View Product</a>

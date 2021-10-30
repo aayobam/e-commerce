@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% load static %}
 {% block title %}Cart Summary{% endblock %}
 
@@ -14,7 +14,7 @@
             {% with product=item.product %}
             <div data-index="{{product.id}}" class="row mb-4 border product-item">
               <div class="col-md-3 col-lg-2 order-md-first bg-light">
-                <img class="img-fluid mx-auto d-block mt-3" width="120px" alt="Responsive image" src="{{ product.product_image.url }}">
+                <img class="img-fluid mx-auto d-block mt-5 mb-5 prod-detail-img" width="120px" alt="Responsive image" src="{{ product.product_image.url }}">
               </div>
               <div class="col-md-9 col-lg-10 ps-md-3 ps-lg-10">
                 <a href="{{ product.get_absolute_url }}" class="text-decoration-none text-reset">
@@ -50,7 +50,7 @@
                           Delete
                         </button>
                       </div>
-                      <div class="col-3" style="padding-left:60px">
+                      <div class="col-3 totalprice">
                           <div id="totalprice">Total Price: ${{item.total_price}}</div>
                       </div>
 

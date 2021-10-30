@@ -9,12 +9,16 @@
     <main class="pt-5">
         <div class="row g-3">
             <div class="col-md-5 col-lg-5 order-md-first bg-light">
-                <img class="img-fluid mx-auto d-block mt-3" width="200px" alt="Responsive image" src="{{ product.product_image.url }}">
+                <img class="img-fluid mx-auto d-block mt-5 prod-detail-img" width="200px" alt="Responsive image" src="{{ product.product_image.url }}">
             </div>
             <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
-                <h5 class="mb-2 h4">Product: {{ product.name|title }}</h5>
-                <p style="margin-left:-500px; margin-bottom: -20px">Brand: <span class="lead">{{ product.brand_name|title }}</span></p>
-                <p style="margin-left:-150px">Description: {{ product.product_description|slice:":355" }}.</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="mb-2 h4">Product: {{ product.name|title }}</h5>
+                        <h4 class="col-12 text-start">Brand: <span class="lead">{{ product.brand_name|title }}</span></h4>
+                        <p class="col-12 text-start">Description: {{ product.product_description|slice:":355" }}.</p>
+                    </div>
+                </div>
                 <div class="border">
                     <div class="col border-bottom">
                         <div class="row p-3">
