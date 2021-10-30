@@ -38,11 +38,8 @@ def card_form_view(request):
             card = request.POST.get("card_number")
             cvv = request.POST.get("cvv")
             exp = request.POST.get("exp")
-            user_id = request.user.id
             Card.objects.create(user=profile.user, card_number = card, cvv=cvv, exp=exp)
-            # validate_payment = ValidatePaymentDetails(card_number=card_details.card_number, cvv=card_details.cvv, exp=card_details.exp)
-            # validate_payment.validate_details(request)
-            
+      
             order = Order.objects.create(
                   user = profile.user,
                   first_name = profile.user.first_name,
@@ -59,7 +56,8 @@ def card_form_view(request):
             )
             order_id=order.pk
             for item in cart:
-                  OrderItem.objects.create(order_id=order_id, product=item["product"],price=item["price"], quantity=item["qty"], delivery_status="Pending")
+                  all_item=OrderItem.objects.create(order_id=order_id, product=item["product"], price=item["price"], quantity=item["qty"])
+                  print("item: ", all_item)
                   messages.success(request, f"order successful")
 
                   # mail config
