@@ -21,10 +21,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('address', models.CharField(max_length=250)),
-                ('zipcode', models.CharField(max_length=10)),
                 ('city', models.CharField(max_length=100)),
                 ('state', models.CharField(max_length=100)),
                 ('country', django_countries.fields.CountryField(max_length=2)),
+                ('zipcode', models.CharField(max_length=10)),
                 ('phone_no', phone_field.models.PhoneField(blank=True, max_length=31)),
                 ('profile_picture', models.ImageField(default='default.jpg', upload_to='media/images')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
