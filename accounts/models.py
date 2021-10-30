@@ -70,7 +70,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=250)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
