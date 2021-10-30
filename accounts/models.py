@@ -1,4 +1,3 @@
-from typing import Counter
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
@@ -7,7 +6,7 @@ from phone_field import PhoneField
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+#from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 
 
@@ -70,11 +69,12 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 
 
 class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=250)
-    zipcode = models.CharField(max_length=10)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     country = CountryField()
+    zipcode = models.CharField(max_length=10)
     phone_no = PhoneField(blank=True)
     profile_picture = models.ImageField(upload_to="media/images", default="default.jpg")
     created_at = models.DateTimeField(auto_now_add=True)
