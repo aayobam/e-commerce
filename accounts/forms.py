@@ -30,4 +30,4 @@ class ProfileForm(forms.ModelForm):
             self.fields["country"].widget.attrs.update({"class":"form-control register", "placeholder":"Country"})
             self.fields["zipcode"].widget.attrs.update({"class":"form-control register", "placeholder":"Zipcode"})
             self.fields["phone_no"].widget.attrs.update({"class":"form-control register", "placeholder":"Phone Number"})
-            self.fields["profile_picture"].widget.attrs.update({"class":"form-control"})
+            self.fields["profile_image"].widget.attrs.update({"class":"form-control"})
