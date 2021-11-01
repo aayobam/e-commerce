@@ -71,12 +71,12 @@ from django_countries.fields import CountryField
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=250)
+    zipcode = models.CharField(max_length=10)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     country = CountryField()
-    zipcode = models.CharField(max_length=10)
     phone_no = PhoneField(help_text="your phone number")
-    profile_picture = models.ImageField(upload_to="media/images", default="default.jpg")
+    profile_image = models.ImageField(upload_to="media/images", default="default.jpg")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
