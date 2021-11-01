@@ -80,13 +80,8 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-
-    class Meta:
-        verbose_name = "profile"
-        verbose_name_plural = "profiles"
-
     def __str__(self):
-        return self.user.username
+        return self.user
 
     def get_absolute_url(self):
         return reverse_lazy("accounts:userpage-profile", kwargs={"pk": self.pk})
