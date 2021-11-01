@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.db import models
 from phone_field import PhoneField
-from django.urls import reverse
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 #from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
@@ -75,10 +75,11 @@ class Profile(models.Model):
     state = models.CharField(max_length=100)
     country = CountryField()
     zipcode = models.CharField(max_length=10)
-    phone_no = PhoneField(blank=True)
+    phone_no = PhoneField(help_text="your phone number")
     profile_picture = models.ImageField(upload_to="media/images", default="default.jpg")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
 
     class Meta:
         verbose_name = "profile"
@@ -88,4 +89,4 @@ class Profile(models.Model):
         return self.user.username
 
     def get_absolute_url(self):
-        return reverse("userpage", kwargs={"pk": self.pk})
+        return reverse_lazy("accounts:userpage-profile", kwargs={"pk": self.pk})

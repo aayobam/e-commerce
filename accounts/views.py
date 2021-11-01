@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from .models import Profile
+from .forms import UserForm, ProfileForm
 from django.contrib import auth, messages
 from .mail_notifocations import MailNotificationForRegisteration
 from e_commerce.settings import DEFAULT_FROM_EMAIL
@@ -88,45 +89,24 @@ def logout(request):
 
 
 @login_required
-def updateprofile(request):
+def updateprofile(request, pk):
     template_name = "accounts/user-profile.html"
-    
-    first_name = request.POST.get('first_name')
-    last_name = request.POST.get('last_name')
-    username = request.POST.get('username')
-    email = request.POST.get('email')
-    address=request.POST.get('address')
-    city=request.POST.get('city')
-    state=request.POST.get('state')
-    country=request.POST.get('country')
-    phone_no=request.POST.get('phone_no')
-    zipcode=request.POST.get('zipcode')
-    profile_image=request.POST.get('profile_image')
-    
-
+    user = get_object_or_404(User, pk=pk)
+    profile = get_object_or_404(Profile, pk=pk)
     if request.method == 'POST':
-        u1=User.objects.get(username=request.user)
-        u1.first_name=first_name
-        u1.last_name=last_name
-        u1.username=username
-        u1.email=email
-        u1.save()
-        print("user updated")
-        user_profile = Profile.objects.get(request.user, instance=u1)
-        user_profile.address=address
-        user_profile.city=city
-        user_profile.state=state
-        user_profile.phone_no=phone_no
-        user_profile.zipcode=zipcode
-        user_profile.country=country
-        user_profile.profile_picture=profile_image
-        if user_profile:
-            user_profile.save()
-            messages.success(request,f'Your Profile has been updated!')
-            return redirect('product_list')
-        else:
-            messages.success(request, f'update your profile')
-            return redirect("accounts:user-profile")
+        u_form = UserForm(request.POST, instance=user)
+        p_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f"your profile was successfully updated")
+            return redirect("accounts:user-profile", pk)
     else:
-        context = {"profile_profile":profile_image}
+        u_form = UserForm(instance=user)
+        p_form = ProfileForm(instance=profile)
+    context = {"u_form":u_form, "p_form":p_form, "profile":profile}
     return render(request, template_name, context)
+
+
+    
+        
