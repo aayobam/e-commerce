@@ -18,7 +18,8 @@ class Cart():
             cart = self.session['cart-session'] = {}
         else:
             self.cart = cart
-
+    
+    # Ensure the changes made were effected and updated from the backend
     def save(self):
         self.session.modified = True
 

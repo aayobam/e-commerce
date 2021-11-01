@@ -11584,7 +11584,7 @@ button a:hover{
   width: 300px;
 }
 
-/*SALES MEDIA QUEARYS*/
+/* SALES MEDIA QUERIES */
 @media screen and (max-width:1300px){
   .product-cont .sales-product{
       width: 500px;
@@ -11634,8 +11634,8 @@ button a:hover{
 
 @media screen and (max-width:900px){
   .product-cont .sales-product{
-      width: 300px;
-      height:130px;
+      width: 400px;
+      height:200px;
       background: white;
       margin: 10px;
   }
