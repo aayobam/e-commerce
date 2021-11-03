@@ -13,63 +13,70 @@
 				{% csrf_token %}
 				<div class="row">
 					<div class="col left m-2 p-5 card">
-						<h3>User-Profile </h3>	
-						<div class="text-center">
-							<img src="{{ profile.profile_image.url }}" alt="" class="avatar rounded" width="150"> 
+						<h3 class="text-center">User-Profile </h3>	
+
+						<div class="text-center form-fields-margin">
+							<img src="{{ profile.profile_image.url }}" alt="" class="avatar rounded-circle" width="150"> 
 						</div>
-						<div class="">
+
+						<div class="form-fields-margin">
 							<label for="firstname" class="form-label">{{u_form.first_name.label|title}}</label> 
 							<p>{{u_form.first_name}}</p>
 						</div>
-						<div class="">
+
+						<div class="form-fields-margin">
 							<label for="" class="form-label">{{u_form.last_name.label|title}}</label> 
 							<p>{{u_form.last_name}}</p>
-							
 						</div>
-						<div class="">
+
+						<div class="form-fields-margin">
 							<label for="firstname" class="form-label">{{u_form.username.label|title}}</label> 
 							<p>{{u_form.username}}</p>
 						</div>
-						<div class="">
+						
+						<div class="form-fields-margin">
 							<label for="firstname" class="form-label">{{u_form.email.label|title}}</label> 
 							<p>{{u_form.email}}</p>
+						</div>
+
+						<div Class="form-fields-margin">
+							<p>{{p_form.profile_image}}</p>
 						</div>
 					</div>
 
 					<div class="col right m-2 p-5 card"> 
-						<div class="">
+						<div class="form-fields-margin">
 							<label for="address" class="form-label">{{p_form.address.label}}</label> 
 							<p>{{p_form.address}}</p>
 						</div>
 
-						<div class="">
+						<div class="form-fields-margin">
 							<label for="address" class="form-label">{{p_form.city.label}}</label> 
 							<p>{{p_form.city}}</p>
 						</div> 
 
-						<div class="">
+						<div class="form-fields-margin">
 							<label for="address" class="form-label">{{p_form.state.label}}</label> 
 							<p>{{p_form.state}}</p> 
 						</div>
 
-						<div Class="">
+						<div Class="form-fields-margin">
 							<label for="address" class="form-label">{{p_form.country.label}}</label> 
 							<p>{{p_form.country}}</p>
 						</div>
 
-						<div Class="">
+						<div Class="form-fields-margin">
 							<label for="address" class="form-label">{{p_form.zipcode.label}}</label> 
 							<p>{{p_form.zipcode}}</p>
 						</div>
 
-						<div Class="">
+						<div Class="form-fields-margin">
 							<label for="address" class="form-label">{{p_form.phone_no.label}}</label> 
 							<p>{{p_form.phone_no}}</p>
 						</div>
-
-						<div Class="">
-							<p>{{p_form.profile_image}}</p>
-						</div>
+						{% if request.GET.next %}
+							<input type="hidden" name="next" value="{{request.GET.next}}">
+						{% endif %}
 						<div class="text-center">
 							<button class="btn btn-primary form-control profile-button w-100" type="submit">SAVE PROFILE</button>
 						</div>

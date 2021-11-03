@@ -14,13 +14,15 @@ from .validate_card_details import ValidatePaymentDetails
 
 
 #Billing details view
-@login_required(login_url="accounts:user-login")
+@login_required(login_url="accounts:user-login", redirect_field_name="next")
 def billing_view(request):
-      profile = Profile.objects.get(user=request.user)
+      template_name = "payment/payment.html"
+      user = request.user
+      profile = Profile.objects.get(user=user)
+
       if (profile.address=="" and profile.zipcode=="" and profile.city=="" and profile.state=="" and profile.country==""):
             messages.info(request, "you have to update your profile to place your orders")
-            return redirect("accounts:user-profile")
-      template_name = "payment/payment.html"
+            return redirect("accounts:user-profile", user.id)
       cart = Cart(request)
       total_price = str(cart.get_total_price())
       total = total_price
@@ -35,11 +37,12 @@ def card_form_view(request):
       cart = Cart(request)
       total = cart.get_total_price()
       if request.method == 'POST':
+            user_id = request.user.id
             card = request.POST.get("card_number")
             cvv = request.POST.get("cvv")
             exp = request.POST.get("exp")
             Card.objects.create(user=profile.user, card_number = card, cvv=cvv, exp=exp)
-      
+             
             order = Order.objects.create(
                   user = profile.user,
                   first_name = profile.user.first_name,
@@ -81,7 +84,3 @@ def card_form_view(request):
             context = {"total":total}
       return render(request, template_name, context)
 
-
-def order_status(request):
-      template_name = "payment/orderplace.html"
-      return render(request, template_name)

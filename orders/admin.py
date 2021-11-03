@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.admin.decorators import action
 from .models import *
 
 
@@ -6,6 +7,17 @@ from .models import *
 @admin.register(OrderItem)
 class AdminOrderItem(admin.ModelAdmin):
     list_display = ('order', 'product', 'price', 'quantity', 'delivery_status', 'created', 'updated')
+    actions = ['pending', 'out_for_delivery', 'delivered']
+
+
+    def pending(self, request, queryset):
+        return queryset.update(delivery_status='Pending')
+
+    def out_for_delivery(self, request, queryset):
+        return queryset.update(delivery_status='Out for deliver')
+
+    def delivered(self, request, queryset):
+        return queryset.update(delivery_status='Delivered')
 
 
 @admin.register(Order)

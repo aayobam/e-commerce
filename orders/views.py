@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from orders.models import *
+
 
 
 def order_success(request):
@@ -8,5 +10,6 @@ def order_success(request):
 
 def orders_view(request):
       template_name = "orders/orders.html"
-      context = {"message": "your order histories are displayed here"}
+      ordered_item = OrderItem.objects.all()
+      context = {"orders":ordered_item}
       return render(request, template_name, context)

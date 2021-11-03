@@ -50,10 +50,6 @@ INSTALLED_APPS = [
     'cartapp',
     'payment',
     'orders',
-
-    #migrations tracker
-    'nashvegas'
-   
 ]
 
 

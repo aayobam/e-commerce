@@ -1,4 +1,5 @@
 import random
+from accounts.models import Profile
 from django.db import models
 from phone_field import PhoneField
 from ecommerceapp.models import Product
@@ -39,9 +40,9 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     Delivert_Status = (
-        (1, "Pending"),
-        (2, "Out for Delivery"),
-        (3, "Delivered"),
+        ("Pending", "Pending"),
+        ("Out for Delivery", "Out for Delivery"),
+        ("Delivered", "Delivered"),
     )
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -52,5 +53,5 @@ class OrderItem(models.Model):
     updated = models.DateTimeField(auto_now=True)
     
     def __str__(self):
-        return self.delivery_status
+        return self.product.name
     

@@ -1,13 +1,15 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.models import User
+import time
+from .decorators import *
 from .models import Profile
 from .forms import UserForm, ProfileForm
 from django.contrib import auth, messages
-from .mail_notifocations import MailNotificationForRegisteration
+from django.contrib.auth.models import User
 from e_commerce.settings import DEFAULT_FROM_EMAIL
-from .decorators import *
 from django.contrib.auth.decorators import login_required
-import time
+from django.shortcuts import render, redirect, get_object_or_404
+from .mail_notifocations import MailNotificationForRegisteration
+
+
 
 
 # create user registration view
@@ -80,7 +82,7 @@ def user_login(request):
             messages.error(request, f'Invalid username or password')
             return redirect("accounts:user-login")
     else:
-        return render(request, template_name, context={})
+        return render(request, template_name)
 
 
 def logout(request):
@@ -88,23 +90,34 @@ def logout(request):
     return redirect("product_list")
 
 
-@login_required
+@login_required(login_url="accounts:user-login", redirect_field_name="next")
 def updateprofile(request, pk):
     template_name = "accounts/user-profile.html"
     user = get_object_or_404(User, pk=pk)
     profile = get_object_or_404(Profile, pk=pk)
+    u_form = None
+    p_form = None
     if request.method == 'POST':
         u_form = UserForm(request.POST, instance=user)
         p_form = ProfileForm(request.POST, request.FILES, instance=profile)
         if u_form.is_valid() and p_form.is_valid():
-            u_form.save()
-            p_form.save()
-            messages.success(request, f"your profile was successfully updated")
+            user_details = u_form.save(commit=False)
+            profile_details = p_form.save(commit=False)
+            profile_details.user = request.user
+            user_details.save()
+            profile_details.save()
+            messages.success(request, f"Your profile was successfully updated")
+            if 'next' in request.GET:
+                return redirect(request.GET.get('next'))
+            else:
+                return redirect("accounts:user-profile", pk)
+        else:
+            messages.error(request, f"Unable to update profile")
             return redirect("accounts:user-profile", pk)
     else:
         u_form = UserForm(instance=user)
         p_form = ProfileForm(instance=profile)
-    context = {"u_form":u_form, "p_form":p_form, "profile":profile}
+    context = {"u_form":u_form, "p_form":p_form, "profile":profile, "user":user}
     return render(request, template_name, context)
 
 
