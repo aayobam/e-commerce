@@ -6,6 +6,9 @@ from phone_field import PhoneField
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 #from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 
@@ -85,3 +88,19 @@ class Profile(models.Model):
 
     def get_absolute_url(self):
         return reverse_lazy("accounts:userpage-profile", kwargs={"pk": self.pk})
+
+@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.get_or_create(user=instance)
+        print("user profile has been created")
+    elif not created:
+        instance.profile.save()
+        print("user details has been updated")
+    else:
+        return False
+
+
+
+
+    
