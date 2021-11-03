@@ -22,7 +22,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 if DEBUG == False:
-    ALLOWED_HOSTS = ['http://bayshops.herokuapp.com', '127.0.0.1', 'localhost']
+    ALLOWED_HOSTS = ['http://ghostretail.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 
@@ -160,7 +160,7 @@ CLOUDINARY_STORAGE = {
 }
 
 # cloudinary configuration for image uploads
-#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 # django error logging
