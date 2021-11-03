@@ -69,7 +69,7 @@ from django_countries.fields import CountryField
 
 
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=250)
     zipcode = models.CharField(max_length=10)
     city = models.CharField(max_length=100)
