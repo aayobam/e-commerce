@@ -28,8 +28,7 @@ share/python-wheels/
 MANIFEST
 .product_image
 .product image
-.__pycache__
-.migrations
+.vscode
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
